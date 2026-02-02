@@ -29,8 +29,6 @@ Quanta achieves competitive performance because it uses:
 • reactive simulation systems
 
 
----
-
 # Core Features
 
 • Fine‑grained reactivity  
