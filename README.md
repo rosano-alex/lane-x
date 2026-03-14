@@ -63,7 +63,7 @@ yarn add quanta
 ```ts
 import { signal, computed, effect } from "quanta"
 
-const count = signal(0)
+const count = pulse(0)
 
 const doubled = computed(() => count.get() * 2)
 
@@ -91,7 +91,7 @@ double: 2
 Signals represent **reactive mutable state**.
 
 ```ts
-const count = signal(0)
+const count = pulse](0)
 
 count.get()
 count.set(1)
@@ -268,8 +268,8 @@ Only the affected nodes update.
 ## Derived State Graph
 
 ```ts
-const price = signal(10)
-const qty = signal(2)
+const price = pulse(10)
+const qty = pulse(2)
 
 const subtotal = computed(() => price.get() * qty.get())
 
@@ -280,15 +280,7 @@ const total = computed(() => subtotal.get() + tax.get())
 effect(() => {
   console.log("total =", total.get())
 })
-```
-
-Graph:
-
-```
-price ─┐
-       ├─> subtotal ─> tax ─> total ─> effect
-qty  ──┘
-```
+``````
 
 ---
 
@@ -319,20 +311,15 @@ effect(() => {
 })
 ```
 
+
+
+
+
 ---
 
-# Benchmark Expectations
+# What Makes Quanta Different
 
-Approximate performance expectations for common reactive workloads.
-
-| Library | Relative Performance |
-|-------|----------------------|
-| Solid Signals | ★★★★★ |
-| Quanta | ★★★★☆ |
-| Angular Signals | ★★★★ |
-| MobX | ★★★ |
-| RxJS | ★★ |
-
+Most signal systems focus purely on **dependency tracking**.
 Quanta achieves competitive performance because it uses:
 
 • array based observer lists  
@@ -340,13 +327,6 @@ Quanta achieves competitive performance because it uses:
 • minimal runtime allocations  
 • deterministic scheduler  
 
-Actual performance will vary by workload.
-
----
-
-# What Makes Quanta Different
-
-Most signal systems focus purely on **dependency tracking**.
 
 Quanta integrates:
 
