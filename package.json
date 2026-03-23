@@ -1,6 +1,6 @@
 {
   "name": "lane-x",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
