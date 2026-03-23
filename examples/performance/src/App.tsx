@@ -4,7 +4,9 @@ import React, {
 import { PulseNode, ComputedNode, EffectNode } from 'zo';
 import './App.css';
 
-// ─── Constants ==============──
+// Code was generated using claude
+
+//  Constants 
 
 const TICKERS = [
   // L1 — Layer 1 blockchains (20)
@@ -47,7 +49,7 @@ interface BenchStats {
   renders: number;
 }
 
-/// STANDARD React demo +++++++++++++++++++++++++++++++++
+/// STANDARD React demo
 
 interface VanillaProps {
   prices: number[];
@@ -147,7 +149,7 @@ function VanillaDemo({ prices, onRender }: VanillaProps) {
   );
 }
 
-// =======Zo demo ==============─────
+// =======Zo demo 
 
 // Module-level pulses — one per coin, created once
 const stockPulses: PulseNode<number>[] = initPrices().map(p => new PulseNode(p));
@@ -260,7 +262,7 @@ function ZoDemo({ onRender }: { onRender: (count: number) => void }) {
   );
 }
 
-// =======Benchmark engine ─────────────────────────────────────────────────────────
+// Benchmark engine 
 
 function runVanillaUpdate(
   prices: number[],
@@ -280,7 +282,7 @@ function runZoUpdate(changedIndices: number[], newPrices: number[]) {
 }
 
 
-// =======Scoreboard ==============───
+// Scoreboard 
 
 function Scoreboard({ STANDARD, zo }: { STANDARD: BenchStats; zo: BenchStats }) {
   const fmt = (n: number) => n.toFixed(2) + 'ms';

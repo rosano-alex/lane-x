@@ -1,39 +1,46 @@
 {
-  "name": "zo",
-  "version": "0.3.0",
-  "description": "Fine-grained reactive signals for React and React Native",
-  "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "license": "MIT",
-  "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs",
-    "test": "vitest",
-    "bench": "node benchmarks/compare.js",
-    "docs": "echo 'Open docs/index.html in your browser'",
-    "lint": "eslint src --ext .ts,.tsx",
-    "pretty": "prettier --write src/**/*.{ts,tsx} README.md"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
-  },
-  "devDependencies": {
-    "eslint": "^10.0.3",
-    "jsdom": "^29.0.0",
-    "prettier": "^3.8.1",
-    "tsup": "^8.0.0",
-    "typescript": "^5.5.0",
-    "vitest": "^1.6.0"
-  },
+  "name": "rn-weather",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@esbuild/linux-arm64": "^0.27.4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
     "@types/react": "^19.2.14",
-    "@types/react-native": "^0.73.0",
-    "webworker": "^0.8.4"
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "zo": "file:../.."
   },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-arm64-gnu": "^4.59.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dashboard{": "react-scripts start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
