@@ -1,6 +1,6 @@
 {
   "name": "lane-x",
-  "version": "1.0.6",
+  "version": "1.0.4",
   "description": "A minimal, high-performance fine-grained reactive runtime with priority-lane scheduling",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -24,7 +24,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --clean --tsconfig tsconfig.build.json",
+    "build": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "yarn build"
