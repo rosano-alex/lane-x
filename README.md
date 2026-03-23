@@ -12,7 +12,7 @@ npm install wacho
 yarn add wacho
 ```
 
-## Quick Start
+## Quick Start Guide
 
 ```ts
 import { pulse, computed, effect } from "wacho";
