@@ -1,6 +1,6 @@
 {
   "name": "@codigos/lane-x",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "A minimal, high-performance fine-grained reactive runtime with priority-lane scheduling",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
