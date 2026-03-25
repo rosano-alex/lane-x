@@ -161,7 +161,7 @@ exports default function TempConverter() {
 | `useObserver(renderFn)` | Track pulse reads inside a render function |
 | `useEffectPulse(fn)` | Run a reactive side-effect (auto-tracked deps) |
 | `useScope()` | Create a scope tied to the component lifecycle |
-					| `use==laneXTrans==ition()` | Buffer pulse writes in a concurrent lane |
+| `useLaneXTranSition()` | Buffer pulse writes in a concurrent lane |
 | `useLane(priority?)` | Create a concurrent lane tied to the component |
 
 ## Docs
