@@ -171,3 +171,8 @@ exports default function TempConverter() {
 ## License
 
 MIT
+
+## Usage Example Diagram
+<figure>
+  <img src="img/arch.jpg" alt="Lane-x Usage Diagrtam">
+</figure>
