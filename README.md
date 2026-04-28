@@ -9,7 +9,7 @@ Lane-x queues reactive work through a priority-lane pipeline (SYNC → USER → 
 #### High-frequency UI state that causes Redux/Context re-render storms
 In apps with real-time data, pulse.set() triggers only the components that actually read that pulse. Not every subscriber to a Redux store slice. For a QSR client with live order status updating at high frequency, this is the difference between a smooth UI and a dropped-frame scroll list.
 
-##3# Concurrent updates without React.startTransition boilerplate
+#### Concurrent updates without React.startTransition boilerplate
 The useLaneXTransition hook gives the same deferred-commit semantics as React's startTransition but for reactive state outside of React's rendering model. Useful for search-as-you-type.
 
 #### Draft/preview patterns (editors, forms with live preview)
