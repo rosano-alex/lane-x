@@ -1,7 +1,6 @@
 import type { Node } from "./node";
 import { LaneTypes } from "./lanetypes";
 
-// deterministic scheduler phases
 const statusQueue: Record<number, Node[]> = {
   [LaneTypes.SYNC]: [],
   [LaneTypes.USER]: [],
@@ -11,16 +10,8 @@ const statusQueue: Record<number, Node[]> = {
 
 let flushing = false;
 
-function laneQueue(lane: number): Node[] {
-  if (statusQueue[lane] == null) {
-    statusQueue[lane] = [];
-  }
-  return statusQueue[lane] as Node[];
-}
-
 export function schedule(node: Node) {
-  const lane = node.lane;
-  laneQueue(lane).push(node);
+  statusQueue[node.lane].push(node);
 
   if (!flushing) {
     flushing = true;
@@ -30,37 +21,25 @@ export function schedule(node: Node) {
 
 function runQueue(queue: Node[]) {
   for (let i = 0; i < queue.length; i++) {
-    const node = queue[i];
-    if (node) {
-      node.run();
-    }
+    queue[i]?.run();
   }
-
   queue.length = 0;
 }
 
-function hasWork(): boolean {
-  return (
-    laneQueue(LaneTypes.SYNC).length > 0 ||
-    laneQueue(LaneTypes.USER).length > 0 ||
-    laneQueue(LaneTypes.TRANSITION).length > 0 ||
-    laneQueue(LaneTypes.BACKGROUND).length > 0
-  );
-}
+const hasWork = (): boolean =>
+  Object.values(statusQueue).some((q) => q.length > 0);
 
 function flush() {
-  // Re-run phases until no new work is produced (effects may schedule more effects)
+  // Effects can schedule more effects, so keep running phases until
+  // the queues drain — capped to stop runaway cyclic effects.
   let iterations = 0;
   do {
-    runQueue(laneQueue(LaneTypes.SYNC));
-    runQueue(laneQueue(LaneTypes.USER));
-    runQueue(laneQueue(LaneTypes.TRANSITION));
-    runQueue(laneQueue(LaneTypes.BACKGROUND));
+    runQueue(statusQueue[LaneTypes.SYNC]);
+    runQueue(statusQueue[LaneTypes.USER]);
+    runQueue(statusQueue[LaneTypes.TRANSITION]);
+    runQueue(statusQueue[LaneTypes.BACKGROUND]);
 
-    // Safety valve to prevent infinite loops from cyclic effects
-    if (++iterations > 100) {
-      break;
-    }
+    if (++iterations > 100) break;
   } while (hasWork());
 
   flushing = false;

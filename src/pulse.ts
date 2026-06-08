@@ -36,14 +36,12 @@ export class PulseNode<T> {
     for (let i = 0; i < observers.length; i++) {
       const obs = observers[i];
       if (obs !== undefined) {
-        // Prune disposed observers in-place to prevent unbounded memory growth.
         if (obs.flags & NodeFlags.DISPOSED) continue;
         observers[write++] = obs;
         obs.mark();
       }
     }
 
-    // Trim the array to surviving observers only.
     if (write < observers.length) observers.length = write;
   }
 }

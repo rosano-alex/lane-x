@@ -1,4 +1,5 @@
 export * from "./bridge";
+export * from "./utils";
 export * from "./clock";
 export * from "./computed";
 export * from "./context";
